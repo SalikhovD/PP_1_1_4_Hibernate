@@ -4,16 +4,15 @@ import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 import org.hibernate.Session;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
 
-    private static final String tableName = "users";
-    private static final String tableField1 = "id";
-    private static final String tableField2 = "name";
-    private static final String tableField3 = "lastname";
-    private static final String tableField4 = "age";
+    private static final String TABLE_NAME = "user";
+    private static final String ID_FIELD = "id";
+    private static final String NAME_FIELD = "name";
+    private static final String LASTNAME_FIELD = "lastname";
+    private static final String AGE_FIELD = "age";
 
     public UserDaoHibernateImpl() {
     }
@@ -22,11 +21,11 @@ public class UserDaoHibernateImpl implements UserDao {
     public void createUsersTable() {
         Session session = Util.getSession();
         session.beginTransaction();
-        session.createSQLQuery("CREATE TABLE IF NOT EXISTS " + tableName + " ("
-                + tableField1 + " INT PRIMARY KEY AUTO_INCREMENT, "
-                + tableField2 + " VARCHAR(255) NOT NULL, "
-                + tableField3 + " VARCHAR(255) NOT NULL, "
-                + tableField4 + " INT NOT NULL"
+        session.createSQLQuery("CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " ("
+                + ID_FIELD + " INT PRIMARY KEY AUTO_INCREMENT, "
+                + NAME_FIELD + " VARCHAR(255) NOT NULL, "
+                + LASTNAME_FIELD + " VARCHAR(255) NOT NULL, "
+                + AGE_FIELD + " INT NOT NULL"
                 + ")").executeUpdate();
         session.getTransaction().commit();
     }
@@ -35,7 +34,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void dropUsersTable() {
         Session session = Util.getSession();
         session.beginTransaction();
-        session.createSQLQuery("DROP TABLE IF EXISTS " + tableName).executeUpdate();
+        session.createSQLQuery("DROP TABLE IF EXISTS " + TABLE_NAME).executeUpdate();
         session.getTransaction().commit();
     }
 

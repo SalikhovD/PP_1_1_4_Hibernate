@@ -19,7 +19,7 @@ public class Util {
     private static final String dbHost = "localHost";
     private static final String dbPort = "3306";
     private static final String dbUser = "root";
-    private static final String dbPass = "12345";
+    private static final String dbPass = "root";
     private static final String dbName = "katatraining";
 
 
